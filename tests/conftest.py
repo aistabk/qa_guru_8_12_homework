@@ -11,10 +11,8 @@ def setup_browser(request):
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
-        "browserVersion": "117.0",
-        "browser.config.window_width = 700"
-        "browser.config.window_height = 1900"
-        "selenoid:options": {
+        "browserVersion": "100.0",
+         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True
         }
@@ -26,6 +24,11 @@ def setup_browser(request):
     )
 
     browser = Browser(Config(driver))
+
+    browser.config.base_url = 'https://demoqa.com'
+    browser.config.timeout = 20
+    browser.config.window_width = 1280
+    browser.config.window_height = 1024
     yield browser
 
     attach.add_screenshot(browser)
