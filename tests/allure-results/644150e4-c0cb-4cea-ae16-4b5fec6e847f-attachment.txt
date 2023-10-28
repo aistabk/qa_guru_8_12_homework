@@ -1,3 +1,0 @@
-INFO     WDM:logger.py:16 ====== WebDriver manager ======
-INFO     WDM:logger.py:16 Current google-chrome version is 117.0.5938
-INFO     WDM:logger.py:16 Get LATEST chromedriver version for 117.0.5938 google-chrome

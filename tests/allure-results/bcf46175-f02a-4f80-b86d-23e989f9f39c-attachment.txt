@@ -1,3 +1,0 @@
-[WDM] - ====== WebDriver manager ======
-[WDM] - Current google-chrome version is 117.0.5938
-[WDM] - Get LATEST chromedriver version for 117.0.5938 google-chrome
