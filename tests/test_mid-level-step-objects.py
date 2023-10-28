@@ -4,6 +4,12 @@ from model.practice_form import PracticeForm
 
 
 @allure.title("Проверка работы формы регистрации")
+@allure.tag("web")
+@allure.severity(Severity.NORMAL)
+@allure.label("owner", "aistabk")
+@allure.description("Проверяем, что после заполнения всех полей проходит регистрация на сайте")
+@allure.feature("demoqa.com registration form")
+@allure.link('https://demoqa.com', name='Testing')
 def test_register_form():
     practice_form = PracticeForm()
     practice_form.open()
