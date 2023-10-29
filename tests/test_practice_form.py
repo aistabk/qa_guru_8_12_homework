@@ -1,6 +1,8 @@
-from selene.support.shared import browser
 import allure
-from model.practice_form import PracticeForm
+from model.practice_form_full import PracticeFormRegistrationFactCheck
+from data.users import User
+
+practice_form = PracticeFormRegistrationFactCheck()
 
 
 @allure.title("Проверка работы формы регистрации")
@@ -9,37 +11,18 @@ from model.practice_form import PracticeForm
 @allure.description("Проверяем, что после заполнения всех полей проходит регистрация на сайте")
 @allure.feature("demoqa.com registration form")
 @allure.link('https://demoqa.com', name='Testing')
-def test_register_form():
-    practice_form = PracticeForm()
+def test_student_registration_form():
+    guest = User(first_name='Имя', last_name='Фамилия', email='testmail@mail.gg', gender='Other',
+                 month_of_brith='November', phone_number='2589632147', year_of_brith='2006', day_of_brith='19',
+                 subject='Physics',
+                 hobby='Reading', picture='hedgehog.jpg', current_address='221b, Baker Street, London, NW1 6XE, UK',
+                 state='NCR',
+                 city='Delhi')
+
+
+with allure.step("Открыть страницу для теста"):
     practice_form.open()
-
-    with allure.step("Заполнение полей формы"):
-        practice_form.fill_first_name('Имя')
-        practice_form.fill_last_name('Фамилия')
-        practice_form.fill_email('testmail@mail.gg')
-        practice_form.fill_phone_number('2589632147')
-        practice_form.gender_select()
-        practice_form.fill_date_of_birth(1985, 10, 19)
-        practice_form.select_hobby()
-        practice_form.fill_subject('P')
-    with allure.step("Добавление фотографии"):
-        practice_form.add_photo('tests/hedgehog.jpg')
-    with allure.step("Заполнение адреса"):
-        practice_form.fill_address('221b', 'Baker Street', 'London', 'NW1 6XE', 'UK')
-        practice_form.state_select('NCR').city_select('Delhi')
-    with allure.step("Подтверждение регистрации пользователя"):
-        browser.element('#submit').click()
-
-    with allure.step("Проверка введенных данных"):
-        practice_form.should_registrated_user_with(
-            'Имя Фамилия',
-            'testmail@mail.gg',
-            'Other',
-            '2589632147',
-            '19 November,1985',
-            'Physics',
-            'Reading',
-            'hedgehog.jpg',
-            '221b, Baker Street, London, NW1 6XE, UK',
-            'NCR Delhi'
-        )
+with allure.step("Заполнить данные пользователя guest"):
+    practice_form.registration(guest)
+with allure.step("Пользователь зарегистрирован, данные введены корректно"):
+    practice_form.student_should_be_registred(guest)
