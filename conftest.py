@@ -27,7 +27,7 @@ def setup_browser(request):
     browser.config.driver = driver
     browser.config.window_width = 700
     browser.config.window_height = 1900
-    browser.config.base_url = "https://demoqa.com"
+    #browser.config.base_url = "https://demoqa.com"
     yield browser
 
     attach.add_screenshot(browser)
