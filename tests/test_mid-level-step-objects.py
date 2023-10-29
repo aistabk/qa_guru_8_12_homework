@@ -23,7 +23,7 @@ def test_register_form():
         practice_form.select_hobby()
         practice_form.fill_subject('P')
     with allure.step("Добавление фотографии"):
-        practice_form.add_photo('test_image/hedgehog.jpg')
+        practice_form.add_photo('tests/hedgehog.jpg')
     with allure.step("Заполнение адреса"):
         practice_form.fill_address('221b', 'Baker Street', 'London', 'NW1 6XE', 'UK')
         practice_form.state_select('NCR').city_select('Delhi')
