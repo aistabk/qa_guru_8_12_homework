@@ -24,7 +24,7 @@ def setup_browser(request):
 
     browser = Browser(Config(driver))
 
-    browser.config.base_url = 'https://demoqa.com'
+
     browser.config.timeout = 20
     browser.config.window_width = 1280
     browser.config.window_height = 1024
