@@ -24,10 +24,6 @@ def setup_browser(request):
 
     browser = Browser(Config(driver))
 
-
-    browser.config.timeout = 20
-    browser.config.window_width = 1280
-    browser.config.window_height = 1024
     yield browser
 
     attach.add_screenshot(browser)
