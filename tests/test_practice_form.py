@@ -5,7 +5,7 @@ import allure
 practice_form = PracticeFormRegistrationFactCheck()
 
 
-def test_student_registration_form():
+def test_student_registration_form(setup_browser):
     with allure.step("Открыть страницу регистрации пользователей"):
         practice_form.open()
     with allure.step("Заполнить форму регистрации тестовыми данными"):
